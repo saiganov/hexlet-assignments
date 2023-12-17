@@ -7,7 +7,7 @@ class HexletCheckTest < ActionDispatch::IntegrationTest
   test 'TasksControllerTest exists and has methods' do
     assert defined? TasksControllerTest
     test_methods = TasksControllerTest.new({}).methods.select { |method| method.start_with? 'test_' }
-    refute_empty test_methods
+    assert_not_empty test_methods
   end
 
   setup do

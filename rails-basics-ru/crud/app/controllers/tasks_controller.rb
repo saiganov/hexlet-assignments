@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   def index
     @tasks = Task.all
@@ -8,6 +10,8 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
   end
+
+  def edit; end
 
   def create
     @task = Task.create(task_params)
@@ -20,8 +24,6 @@ class TasksController < ApplicationController
       render :new
     end
   end
-
-  def edit; end
 
   def update
     if @task.update(task_params)
