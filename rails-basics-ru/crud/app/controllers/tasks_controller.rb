@@ -19,8 +19,6 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to @task, notice: 'Task created.'
     else
-      flash[:failure] = "Rrrors: #{@task.errors.full_messages.join(', ')}"
-
       render :new
     end
   end
@@ -31,20 +29,14 @@ class TasksController < ApplicationController
 
       redirect_to task_path(@task)
     else
-      flash[:failure] = "Errors: #{@task.errors.full_messages.join(', ')}"
-
       redirect_to task_path(@task)
     end
   end
 
   def destroy
     if @task.destroy
-      flash[:success] = 'Task deleted'
-
       redirect_to tasks_path
     else
-      flash[:failure] = 'Task cannot be deleted'
-
       redirect_to task_path(@task)
     end
   end
