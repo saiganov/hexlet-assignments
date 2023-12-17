@@ -16,23 +16,17 @@ class TasksController < ApplicationController
   def create
     @task = Task.create(task_params)
 
-    if @task.save
-      redirect_to @task
-    end
+    redirect_to @task if @task.save
     render :new
   end
 
   def update
-    if @task.update(task_params)
-      redirect_to task_path(@task)
-    end
+    redirect_to task_path(@task) if @task.update(task_params)
     redirect_to task_path(@task)
   end
 
   def destroy
-    if @task.destroy
-      redirect_to tasks_path
-    end
+    redirect_to tasks_path if @task.destroy
     redirect_to task_path(@task)
   end
 
